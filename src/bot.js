@@ -10,7 +10,7 @@ bot.onMessageHandler = async function onMessageHandler(client, target, context, 
   const commandName = msg.trim();
 
   if (commandName === "!abrazote") {
-      client.say(target, `Te mando este súper abrazo!! ${context.username} <3`);
+      client.say(target, `Te mando este súper abrazo! ${context.username} <3`);
   }
 
   if (commandName === "!café") {
