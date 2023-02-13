@@ -5,6 +5,7 @@ const { json } = require('express');
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
+const bot = require('../src/bot');
 
 var cors = require('cors');
 app.use(cors());
@@ -56,24 +57,11 @@ app.listen(3000, () => {
 });
 
 function onMessageHandler(target, context, msg, self) {
-    // if (self) {
-    //   return;
-    // }
-
-    const commandName = msg.trim();
-
-    if (commandName === "!hola") {
-        client.say(target, `Bot - holaaa ${context.username}`);
-        console.log(`* Executed ${commandName} command`);
-    } 
-
-    if(commandName === '!channel') {
-        client.say('ailingdev', 'BOT - AilingDev');
-    }
+  bot.onMessageHandler(client, target, context, msg, self);
 }
   
-  function onConnectedHandler(addr, port) {
-    console.log(`* Connected to ${addr}:${port}`);
-  }
-  
-  module.exports = {bot: client};
+function onConnectedHandler(addr, port) {
+  console.log(`* Connected to ${addr}:${port}`);
+}
+
+module.exports = {bot: client};
