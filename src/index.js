@@ -50,6 +50,7 @@ app.use(express.json());
 // Routes
 // app.use(require('./routes/index'));
 app.use('/api', require('./routes/bot'));
+app.use('/auth', require('./routes/auth'));
 
 // Starting the server
 app.listen(3000, () => {
